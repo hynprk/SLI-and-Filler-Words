@@ -36,7 +36,8 @@ cleaned <- cleaned %>%
                 fillers,
                 mlu_words,
                 dss,
-                word_errors)
+                word_errors,
+                retracing)
 
 ### Omit NA's ###
 cleaned <- cleaned %>% na.omit() # none!
