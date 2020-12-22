@@ -1,4 +1,4 @@
-# Causal Relationship between Specific Language Impairment in Children and the Average Number of Filler Words
+# Investigating the Causal Effect of Specific Language Impairment (SLI) on the Average Number of Filler Words
 *Interdisciplinary work of statistics and psycholinguistics*
 
 Please download the dataset `all_data_R.csv` which is under the folder input/archive or visit https://www.kaggle.com/dgokeeffe/specific-language-impairment.
