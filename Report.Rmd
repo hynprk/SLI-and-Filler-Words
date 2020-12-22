@@ -5,7 +5,7 @@ author:
   affiliation: "University of Toronto"
 abstract: "Speech pathologists are eager to understand the underlying reasons of specific language impairment (SLI) in children. Hence, this paper investigates the causal relationship between the treatment (SLI) and the average number of filler words (outcome) using propensity score matching (PSM) in order to understand how speech planning differs between language impaired children and typically developing (TD) children. Results relay that there is not a significant difference between the average number of filler words between SLI and TD children, and that the treatment is not useful in predicting the effect of it towards the outcome. In conclusion, there is no difference in the process of speech planning between treated and untreated children; however, this could be an issue of a Type II error, due to the limitations of PSM."
 keywords: "propensity score matching (PSM), specific language impairment (SLI), typically developing (TD), speech planning, filler words, psycholinguistics, speech pathology, nearest neighbour matching"
-date: "December 21, 2020"
+date: "December 22, 2020"
 geometry: margin=1in
 sansitup: TRUE
 output: 
@@ -511,8 +511,17 @@ Lastly, it is also crucial to ensure appropriate covariates have been chosen. Ac
 |      in Words?: MLU3-w, a Reliable Measure of Language Development in Early Basque.
 |      *Frontiers in Psychology*, 8(2265). https://doi.org/10.3389/fpsyg.2017.02265 
 |
+|  Fox et al. (2020). *Package 'car'*. Retrieved from
+|      https://cran.r-project.org/web/packages/car/car.pdf
+|
+|  Gelman, A., et al. (2020). arm: Data Analysis Using Regression and Multilevel/Hierarchical
+|      Models. https://cran.r-project.org/package=arm
+|
 |  Glen, S. (2018, June 13). *Nearest Neighbor Matching: Definition*. Retrieved from
 |      https://www.statisticshowto.com/nearest-neighbor-matching/
+|
+|  Hayes, A. (n.d.) *broom v0.7.3*. RDocumentation. 
+|      Retrieved from https://www.rdocumentation.org/packages/broom/versions/0.7.3
 |
 |  Investopedia. (2018). Variance Inflation Factor (VIF). *Investopedia*.
 |      Retrieved from https://www.investopedia.com/terms/v/variance-inflation-factor.asp
@@ -563,6 +572,12 @@ Lastly, it is also crucial to ensure appropriate covariates have been chosen. Ac
 |
 |  Streiner, D. L & Norman, G. R (2012). The Pros and Cons of Propensity Scores. 
 |      CHEST Journal, 142(6), 1380-1382. https://doi.org/10.1378/chest.12-1920
+|
+|  Wickham, H., et al. (2019). Welcome to the tidyverse. *Journal of Open Source Software*,
+|      4(43), 1686. https://doi.org/10.21105/joss.01686
+|
+|  Xie, Y. (2020). *knitr: A General-Purpose Package for Dynamic Report Generation in R.*
+|      R package version 1.30. Retrieved from https://CRAN.R-project.org/package=knitr
 |
 
 # Appendix
