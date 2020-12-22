@@ -24,7 +24,7 @@ rawdata <- read_csv("input/archive/all_data_R.csv")
 rawdata <- labelled::to_factor(rawdata)
 
 ### Random Sampling ###
-set.seed(8181)
+set.seed(304)
 sampsize <- 1000
 cleaned <- tibble(rawdata[sample(nrow(rawdata), size = sampsize, replace=FALSE), ])
 
@@ -36,8 +36,7 @@ cleaned <- cleaned %>%
                 fillers,
                 mlu_words,
                 dss,
-                word_errors,
-                retracing)
+                word_errors)
 
 ### Omit NA's ###
 cleaned <- cleaned %>% na.omit() # none!
