@@ -17,17 +17,17 @@ library(broom)
 library(arm)
 
 ### Reading in sampled data ###
-sli_data <- read_csv("output/sample_data.csv")
+SLIdata <- read_csv("output/sample_data.csv")
 
 # Fix the class on some
 
-sli_data <-
-  sli_data %>% 
-  mutate_at(vars(group, age_group), ~as.factor(.)) 
+SLIdata <-
+  SLIdata %>% 
+  mutate_at(vars(group), ~as.factor(.)) 
 
 # Change some to factors
 
-table(sli_data$group) # 230 treatments
+table(SLIdata$group) # 214 treatments
 
 # Treatment: SLI
 # Control: Typical Development (TD)
@@ -40,16 +40,17 @@ propensity_score <- glm(sli ~ age +
                           child_TNS + 
                           mlu_words + 
                           word_errors + 
-                          dss +
-                          retracing, 
+                          dss, 
                         family = binomial,
-                        data = sli_data)
+                        data = SLIdata)
+
+summary(propensity_score)
 
 ### Forecasting Data set ###
 
-sli_data <- 
+SLIdata <- 
   augment(propensity_score, 
-          data = sli_data,
+          data = SLIdata,
           type.predict = "response") %>% 
   dplyr::select(-.resid, -.std.resid, -.hat, -.sigma, -.cooksd) 
 
@@ -57,8 +58,8 @@ sli_data <-
 # We want to find those td children
 # who were considered similar to sli children
 
-sli_data <- 
-  sli_data %>% 
+SLIdata <- 
+  SLIdata %>% 
   arrange(.fitted, sli)
 
 # Using matching function (arm package)
@@ -66,22 +67,22 @@ sli_data <-
 ## closest of the ones that were not treated, to 
 ## each one that was treated.
 
-sli_data$treated <- 
-  ifelse(sli_data$sli == 1, 1, 0)
+SLIdata$treated <- 
+  ifelse(SLIdata$sli == 1, 1, 0)
 
-sli_data$treated <- 
-  as.integer(sli_data$treated)
+SLIdata$treated <- 
+  as.integer(SLIdata$treated)
 
-matches <- arm::matching(z = sli_data$treated, 
-                         score = sli_data$.fitted)
+matches <- arm::matching(z = SLIdata$treated, 
+                         score = SLIdata$.fitted)
 
-sli_data <- cbind(sli_data, matches)
+SLIdata <- cbind(SLIdata, matches)
 
 # Only leaving those that are matched in the data set
 # Data reduction
-# We had 230 treated, so we expect matched data set of 460 observations
+# We had 214 treated, so we expect matched data set of 428 observations
 sli_matched <- 
-  sli_data %>% 
+  SLIdata %>% 
   filter(match.ind != 0) %>% 
   dplyr::select(-match.ind, -pairs, -treated)
 
@@ -93,20 +94,12 @@ head(sli_matched)
 
 propensity_score_regression <- 
   lm(fillers ~ age + 
+       child_TNS +
        mlu_words + 
        word_errors + 
-       child_TNS + 
-       sli + 
        dss + 
-       retracing, 
+       sli, 
      data = sli_matched)
 
 # Summary
 summary(propensity_score_regression)
-
-# Backward AIC
-step(propensity_score_regression, direction = "backward")
-
-# Backward BIC
-n <- length(sli_matched$group)
-step(propensity_score_regression, direction = "backward", k = log(n))
