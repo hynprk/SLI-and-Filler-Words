@@ -2,13 +2,16 @@
 # Author: Hyo-Eun Park
 # Title: Data Cleaning
 # Context: Cleaning data about Specific Language Impairment (SLI) children
-# Date: December 9, 2020
+# Date: December 22, 2020
 # Link to data set: https://www.kaggle.com/dgokeeffe/specific-language-impairment
+## Alternative: download all_data_R.csv from input/archive folder
 # Pre-requisites:
 # - Need to download the data set
 # and save it in a folder called 'input'
+# - Make sure the archive folder is unzipped
+# - See Workspace Set-up for the raw data pathway
 # - Create a folder called 'output'
-# which is where you are going to save the cleaned data
+# This is where you are going to save the cleaned data
 # - Both 'input' and 'output' should be in the working directory
 
 
